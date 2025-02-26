@@ -6,7 +6,7 @@
 /*   By: jopedro- <jopedro-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:06:44 by jopedro-          #+#    #+#             */
-/*   Updated: 2025/02/24 12:12:27 by jopedro-         ###   ########.fr       */
+/*   Updated: 2025/02/26 10:14:21 by jopedro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ void	check_walls(t_map *map);
 int		key_handler(int keycode, t_map *map);
 int		valid_move(t_map *map, int x, int y);
 void	action(t_map *map, int x, int y, void *img);
-void	check_collect(t_map *map);
-void	actions(t_map *map, int x, int y, void *img);
+void	check_collects(t_map *map);
 void	move_up(t_map *map);
 void	move_down(t_map *map);
 void	move_right(t_map *map);
@@ -70,5 +69,7 @@ void	move_left(t_map *map);
 void	flood_fill(int x, int y, t_map *map);
 void	close_game(t_map *map, char *str, int fd);
 int		close_window(t_map *map);
+t_map	*init_struct(void);
+void	map_height(t_map *map);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: jopedro- <jopedro-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:07:00 by jopedro-          #+#    #+#             */
-/*   Updated: 2025/02/24 12:01:06 by jopedro-         ###   ########.fr       */
+/*   Updated: 2025/02/26 11:29:10 by jopedro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	map_char(t_map *map, int i, int j)
+void	map_chars(t_map *map, int i, int j)
 {
 	if (map->grid[i][j] == 'P')
 	{
@@ -36,6 +36,8 @@ void	flood_fill(int x, int y, t_map *map)
 		map->exit--;
 	else if (map->grid_clone[x][y] == 'C')
 		map->collect--;
+	else if (map->grid_clone[x][y] == 'P')
+		map->player--;
 	map->grid_clone[x][y] = 'F';
 	if (x > 0)
 		flood_fill(x - 1, y, map);
@@ -66,14 +68,14 @@ void	clone_grid(t_map *map)
 	map->grid_clone = malloc(sizeof(char *) * map->height);
 	if (!map->grid_clone)
 		close_game(map, "Error\nFailed to allocate memory for grid clone\n", 2);
-	while (map->grid[i])
+	while (i < map->height)
 	{
 		j = 0;
 		map->grid_clone[i] = malloc(sizeof(char *) * map->width);
-		if (map->grid_clone)
+		if (!map->grid_clone[i])
 			close_game(map, "Error\nFailed to allocate memory for grid clone\n",
 				2);
-		while (map->grid[i][j])
+		while (map->grid[i][j] && map->grid[i][j] != '\n')
 		{
 			map->grid_clone[i][j] = map->grid[i][j];
 			j++;

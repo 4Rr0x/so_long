@@ -6,7 +6,7 @@
 /*   By: jopedro- <jopedro-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 12:09:07 by jopedro-          #+#    #+#             */
-/*   Updated: 2025/02/24 12:02:39 by jopedro-         ###   ########.fr       */
+/*   Updated: 2025/02/26 11:17:20 by jopedro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	free_mlx(t_map *map)
 	}
 }
 
-void	free_grid(char **grid)
+void	free_grid(char **grid, int height)
 {
 	int	i;
 
 	i = 0;
 	if (grid)
 	{
-		while (grid[i])
+		while (i < height)
 			free (grid[i++]);
 		free (grid);
 	}
@@ -57,9 +57,9 @@ void	free_map(t_map *map)
 	if (map)
 	{
 		if (map->grid)
-			free_grid(map->grid);
+			free_grid(map->grid, map->height);
 		if (map->grid_clone)
-			free_grid(map->grid_clone);
+			free_grid(map->grid_clone, map->height);
 	}
 }
 

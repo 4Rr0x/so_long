@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   map_height.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopedro- <jopedro-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 11:57:33 by jopedro-          #+#    #+#             */
-/*   Updated: 2025/02/26 12:08:49 by jopedro-         ###   ########.fr       */
+/*   Created: 2025/02/26 10:10:01 by jopedro-          #+#    #+#             */
+/*   Updated: 2025/02/26 10:13:24 by jopedro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	check_collects(t_map *map)
+void	map_height(t_map *map)
 {
-	int	i;
-	int	j;
+	int		lines;
+	char	*line;
+	int		fd;
 
-	if (map->collect == 0)
+	lines = 0;
+	fd = open(map->path, O_RDONLY);
+	if (fd == -1)
+		close_game(map, "Error\nError opening map file\n", 2);
+	line = get_next_line(fd);
+	while (line && *line)
 	{
-		i = 0;
-		while (map->grid[i])
-		{
-			j = 0;
-			while (map->grid[i][j])
-			{
-				if (map->grid[i][j] == 'E')
-					mlx_put_image_to_window(map->mlx, map->window,
-						map->img->door_open, i * 16, j * 16);
-				j++;
-			}
-			i++;
-		}
+		lines++;
+		free(line);
+		line = get_next_line(fd);
 	}
+	free(line);
+	map->height = lines;
+	close(fd);
 }

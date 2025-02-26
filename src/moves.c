@@ -15,23 +15,23 @@
 void	move_up(t_map *map)
 {
 	if (valid_move(map, map->player_x - 1, map->player_y))
-		actions(map, map->player_x - 1, map->player_y, map->img->back);
+		action(map, map->player_x - 1, map->player_y, map->img->back);
 }
 
 void	move_down(t_map *map)
 {
 	if (valid_move(map, map->player_x + 1, map->player_y))
-		actions(map, map->player_x - 1, map->player_y, map->img->front);
+		action(map, map->player_x - 1, map->player_y, map->img->front);
 }
 
 void	move_right(t_map *map)
 {
 	if (valid_move(map, map->player_x, map->player_y + 1))
-		actions(map, map->player_x - 1, map->player_y, map->img->right);
+		action(map, map->player_x - 1, map->player_y, map->img->right);
 }
 
 void	move_left(t_map *map)
 {
 	if (valid_move(map, map->player_x, map->player_y - 1))
-		actions(map, map->player_x - 1, map->player_y, map->img->left);
+		action(map, map->player_x - 1, map->player_y, map->img->left);
 }

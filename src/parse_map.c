@@ -6,7 +6,7 @@
 /*   By: jopedro- <jopedro-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:13:24 by jopedro-          #+#    #+#             */
-/*   Updated: 2025/02/21 13:00:01 by jopedro-         ###   ########.fr       */
+/*   Updated: 2025/02/26 10:25:45 by jopedro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_file(t_map	*map)
 {
-	if (ft_strcmp(ft_strrchr(map->path, '.'), ".ber") && ft_strlen(map->path))
+	if (ft_strcmp(ft_strrchr(map->path, '.'), ".ber") == 0 && ft_strlen(map->path))
 		return ;
 	close_game(map, "Error\nInvalid input file", 2);
 }
@@ -25,10 +25,10 @@ void	map_stats(t_map	*map)
 	int	j;
 
 	i = 0;
-	while (map->grid[i])
+	while (i < map->height)
 	{
 		j = 0;
-		while (map->grid[i][j])
+		while (map->grid[i][j] && map->grid[i][j] != '\n')
 		{
 			map_chars(map, i, j);
 			j++;
@@ -38,7 +38,6 @@ void	map_stats(t_map	*map)
 		map->width = j;
 		i++;
 	}
-	map->height = i;
 }
 
 void	fill_grid(t_map	*map)
@@ -82,6 +81,7 @@ void	check_contents(t_map *map)
 void	check_map(t_map	*map)
 {
 	check_file(map);
+	map_height(map);
 	fill_grid(map);
 	map_stats(map);
 	check_contents(map);

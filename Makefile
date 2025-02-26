@@ -6,7 +6,7 @@
 #    By: jopedro- <jopedro-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/21 12:50:10 by jopedro-          #+#    #+#              #
-#    Updated: 2025/02/21 13:03:36 by jopedro-         ###   ########.fr        #
+#    Updated: 2025/02/26 10:14:36 by jopedro-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ BUILD_PATH		= .build
 TEMP_PATH		= .temp
 
 SRC				= $(addprefix $(SRC_PATH)/, main.c checks.c close_game.c handler.c \
-				  	map_utils.c move_events.c moves.c parse_map.c window.c) 
+				  	map_utils.c move_events.c moves.c parse_map.c window.c init.c \
+					map_height.c) 
 
 OBJS			= $(SRC:$(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)
 
