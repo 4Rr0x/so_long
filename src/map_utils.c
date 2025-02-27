@@ -54,9 +54,9 @@ void	validate_fill(t_map *map)
 	if (map->player != 0)
 		close_game(map, "Error\nThe map must have only 1 player\n", 2);
 	if (map->exit != 0)
-		close_game(map, "Error\nThe map must have only 1 exit\n", 2);
+		close_game(map, "Error\nThe map doesn't have a possible path\n", 2);
 	if (map->collect != 0)
-		close_game(map, "Error\nThe map must have at least 1 collectible\n", 2);
+		close_game(map, "Error\nThe map must doesn't have a possible path\n", 2);
 }
 
 void	clone_grid(t_map *map)

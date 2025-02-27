@@ -74,7 +74,7 @@ void	check_contents(t_map *map)
 		close_game(map, "Error\nThe map must have only 1 player\n", 2);
 	if (map->exit != 1)
 		close_game(map, "Error\nThe map must have only 1 exit\n", 2);
-	if (map->collect < 0)
+	if (map->collect <= 0)
 		close_game(map, "Error\nThe map must have at least 1 collectible\n", 2);
 }
 

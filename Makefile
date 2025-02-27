@@ -15,6 +15,7 @@
 #==============================================================================#
 
 NAME = so_long
+NAME_BONUS = so_long_bonus
 
 ### Message Vars
 _SUCCESS 		= [$(GRN)SUCCESS$(D)]
@@ -30,15 +31,22 @@ _SEP 			= =====================
 #==============================================================================#
 
 SRC_PATH 		= src
+SRC_BONUS_PATH	= src_bonus
 LIBS_PATH		= lib
 BUILD_PATH		= .build
+BUILDB_PATH 	= .build_bonus
 TEMP_PATH		= .temp
 
 SRC				= $(addprefix $(SRC_PATH)/, main.c checks.c close_game.c handler.c \
 				  	map_utils.c move_events.c moves.c parse_map.c window.c init.c \
 					map_height.c) 
 
+SRC_BONUS		= $(addprefix $(SRC_BONUS_PATH)/, main.c checks.c close_game.c \
+				  	handler.c map_utils.c move_events.c moves.c parse_map.c window.c \
+					init.c map_height.c window_moves.c)
+
 OBJS			= $(SRC:$(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)
+OBJS_BONUS		= $(SRC_BONUS:$(SRC_BONUS_PATH)/%.c=$(BUILDB_PATH)/%.o)
 
 LIBFT_PATH		= $(LIBS_PATH)/42_libft
 LIBFT_ARC		= $(LIBFT_PATH)/libft.a
@@ -72,6 +80,8 @@ MAKE		= make -C
 
 all: deps $(NAME)
 
+bonus: deps $(NAME_BONUS)
+
 other: $(BUILD_PATH) $(OBJS)
 	@echo "[$(YEL)Compiling so_long$(D)]"
 	$(CC) $(CFLAGS) $(DFLAGS) $(OBJS) -o $(NAME)
@@ -81,9 +91,17 @@ $(BUILD_PATH)/%.o: $(SRC_PATH)/%.c
 	@echo -n "$(MAG)█$(D)"
 	$(CC) $(CFLAGS) $(DFLAGS) -MMD -MP -c $< -o $@
 
+$(BUILDB_PATH)/%.o: $(SRC_BONUS_PATH)/%.c
+	@echo -n "$(MAG)█$(D)"
+	$(CC) $(CFLAGS) $(DFLAGS) -MMD -MP -c $< -o $@
+
 $(BUILD_PATH):
 	$(MKDIR_P) $(BUILD_PATH)
 	@echo "* $(YEL)Creating $(BUILD_PATH) folder:$(D) $(_SUCCESS)"
+
+$(BUILDB_PATH):
+	$(MKDIR_P) $(BUILDB_PATH)
+	@echo "* $(YEL)Creating $(BUILDB_PATH) folder:$(D) $(_SUCCESS)"
 
 $(TEMP_PATH):
 	$(MKDIR_P) $(TEMP_PATH)
@@ -93,6 +111,12 @@ $(NAME): $(BUILD_PATH) $(LIBFT_ARC) $(OBJS)
 	@echo "[$(YEL)Compiling so_long$(D)]"
 	$(CC) $(CFLAGS) $(DFLAGS) $(OBJS) $(LIBFT_ARC) $(MLXFLAGS) -o $(NAME)
 	@echo "[$(_SUCCESS) compiling $(MAG)so_long!$(D) $(YEL)🖔$(D)]"
+
+$(NAME_BONUS): $(BUILDB_PATH) $(LIBFT_ARC) $(OBJS_BONUS)
+	@echo "[$(YEL)Compiling so_long bonus$(D)]"
+	$(CC) $(CFLAGS) $(DFLAGS) $(OBJS_BONUS) $(LIBFT_ARC) $(MLXFLAGS) -o $(NAME_BONUS)
+	@echo "[$(_SUCCESS) compiling $(MAG)so_long bonus!$(D) $(YEL)🖔$(D)]"
+
 
 $(LIBFT_ARC):
 	$(MAKE) $(LIBFT_PATH) extra

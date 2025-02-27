@@ -20,14 +20,13 @@ void	check_collects(t_map *map)
 	if (map->collect == 0)
 	{
 		i = 0;
-		while (map->grid[i])
+		while (i < map->height)
 		{
 			j = 0;
 			while (map->grid[i][j])
 			{
-				if (map->grid[i][j] == 'E')
-					mlx_put_image_to_window(map->mlx, map->window,
-						map->img->door_open, i * 16, j * 16);
+				mlx_put_image_to_window(map->mlx, map->window,
+						map->img->door_open, j * 64, i * 64);
 				j++;
 			}
 			i++;

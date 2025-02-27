@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	map = init_struct();
 	if (ac != 2)
-		close_game(map, "Error\nInvalid number of arguments", 2);
+		close_game(map, "Error\nInvalid number of arguments\n", 2);
 	map->path = av[1];
 	check_map(map);
 	create_window(map);
