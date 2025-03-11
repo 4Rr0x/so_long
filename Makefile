@@ -185,6 +185,10 @@ clean: 				## Remove object files
 			$(RM) $(BUILD_PATH); \
 			echo "* $(YEL)Removing $(CYA)$(BUILD_PATH)$(D) folder & files$(D): $(_SUCCESS)"; \
 		fi; \
+		if [ -d "$(BUILDB_PATH)" ]; then \
+			$(RM) $(BUILDB_PATH); \
+			echo "* $(YEL)Removing $(CYA)$(BUILDB_PATH)$(D) folder & files$(D): $(_SUCCESS)"; \
+		fi; \
 		if [ -d "$(TEMP_PATH)" ]; then \
 			$(RM) $(TEMP_PATH); \
 			echo "* $(YEL)Removing $(CYA)$(TEMP_PATH)$(D) folder & files:$(D) $(_SUCCESS)"; \

@@ -36,10 +36,10 @@ void	free_mlx(t_map *map)
 			mlx_destroy_image(map->mlx, map->img->door_closed);
 		if (map->window)
 			mlx_destroy_window(map->mlx, map->window);
-		free(map->img);
 		mlx_destroy_display(map->mlx);
 		free(map->mlx);
 	}
+	free(map->img);
 }
 
 void	free_grid(char **grid, int height)

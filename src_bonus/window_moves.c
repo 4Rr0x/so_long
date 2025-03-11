@@ -15,10 +15,13 @@
 void	render_moves(t_map *map)
 {
 	char	*moves;
+	char	*temp;
 	int		len;
 
-	moves = ft_itoa(map->moves);
-	moves = ft_strjoin("Moves : ", moves);
+	moves = NULL;
+	temp = NULL;
+	temp = ft_itoa(map->moves);
+	moves = ft_strjoin("Moves : ", temp);
 	len = ft_strlen(moves) * 7;
 	if (!map->img->moves)
 		map->img->moves = mlx_new_image(map->mlx, map->width * 64, 48);
@@ -26,5 +29,6 @@ void	render_moves(t_map *map)
 		map->height * 64);
 	mlx_string_put(map->mlx, map->window, (map->width * 64 / 2)
 		- (len / 2), map->height * 64 + 26, 0xFFFFFF, moves);
+	free(temp);
 	free(moves);
 }

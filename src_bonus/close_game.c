@@ -34,12 +34,16 @@ void	free_mlx(t_map *map)
 			mlx_destroy_image(map->mlx, map->img->door_open);
 		if (map->img->door_closed)
 			mlx_destroy_image(map->mlx, map->img->door_closed);
+		if (map->img->moves)
+			mlx_destroy_image(map->mlx, map->img->moves);
+		if (map->img->enemy)
+			mlx_destroy_image(map->mlx, map->img->enemy);
 		if (map->window)
 			mlx_destroy_window(map->mlx, map->window);
-		free(map->img);
 		mlx_destroy_display(map->mlx);
 		free(map->mlx);
 	}
+	free(map->img);
 }
 
 void	free_grid(char **grid, int height)

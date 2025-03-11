@@ -28,6 +28,8 @@ t_img	*init_struct_img(t_map *map)
 	img->left = NULL;
 	img->right = NULL;
 	img->wall = NULL;
+	img->enemy = NULL;
+	img->moves = NULL;
 	return (img);
 }
 
