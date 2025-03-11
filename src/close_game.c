@@ -39,7 +39,6 @@ void	free_mlx(t_map *map)
 		mlx_destroy_display(map->mlx);
 		free(map->mlx);
 	}
-	free(map->img);
 }
 
 void	free_grid(char **grid, int height)
@@ -71,6 +70,7 @@ void	close_game(t_map *map, char *msg, int fd)
 	if (map)
 		free_map(map);
 	free_mlx(map);
+	free(map->img);
 	free(map);
 	ft_putstr_fd(msg, fd);
 	exit(1);
