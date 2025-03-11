@@ -24,13 +24,15 @@ void	map_chars(t_map *map, int i, int j)
 		map->collect++;
 	else if (map->grid[i][j] == 'E')
 		map->exit++;
-	else if (map->grid[i][j] != '0' && map->grid[i][j] != '1' && map->grid[i][j] != 'X')
+	else if (map->grid[i][j] != '0' && map->grid[i][j] != '1'
+			&& map->grid[i][j] != 'X')
 		close_game(map, "Error\nUknown character\n", 2);
 }
 
 void	flood_fill(int x, int y, t_map *map)
 {
-	if (map->grid_clone[x][y] == '1' || map->grid_clone[x][y] == 'F' || map->grid_clone[x][y] == 'X')
+	if (map->grid_clone[x][y] == '1' || map->grid_clone[x][y] == 'F'
+		|| map->grid_clone[x][y] == 'X')
 		return ;
 	else if (map->grid_clone[x][y] == 'E')
 	{
@@ -59,7 +61,8 @@ void	validate_fill(t_map *map)
 	if (map->exit != 0)
 		close_game(map, "Error\nThe map doesn't have a possible path\n", 2);
 	if (map->collect != 0)
-		close_game(map, "Error\nThe map must doesn't have a possible path\n", 2);
+		close_game(map, "Error\nThe map must doesn't have a \
+possible path\n", 2);
 }
 
 void	clone_grid(t_map *map)

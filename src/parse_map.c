@@ -14,9 +14,10 @@
 
 void	check_file(t_map	*map)
 {
-	if (ft_strcmp(ft_strrchr(map->path, '.'), ".ber") == 0 && ft_strlen(map->path))
+	if (ft_strcmp(ft_strrchr(map->path, '.'), ".ber") == 0
+		&& ft_strlen(map->path))
 		return ;
-	close_game(map, "Error\nInvalid input file", 2);
+	close_game(map, "Error\nInvalid input file\n", 2);
 }
 
 void	map_stats(t_map	*map)

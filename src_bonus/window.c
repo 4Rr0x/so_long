@@ -82,8 +82,8 @@ void	load_map(t_map *map)
 void	create_window(t_map *map)
 {
 	map->mlx = mlx_init();
-	map->window = mlx_new_window(map->mlx, map->width * 64, (map->height * 64) + 48,
-			"SO_LONG");
+	map->window = mlx_new_window(map->mlx, map->width * 64,
+			(map->height * 64) + 48, "SO_LONG");
 	load_img(map);
 	load_map(map);
 	render_moves(map);

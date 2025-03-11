@@ -53,4 +53,3 @@ t_map	*init_struct(void)
 	map->width = 0;
 	return (map);
 }
-

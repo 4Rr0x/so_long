@@ -26,7 +26,7 @@ void	check_collects(t_map *map)
 			while (map->grid[i][j])
 			{
 				mlx_put_image_to_window(map->mlx, map->window,
-						map->img->door_open, j * 64, i * 64);
+					map->img->door_open, j * 64, i * 64);
 				j++;
 			}
 			i++;

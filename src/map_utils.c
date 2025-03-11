@@ -56,7 +56,8 @@ void	validate_fill(t_map *map)
 	if (map->exit != 0)
 		close_game(map, "Error\nThe map doesn't have a possible path\n", 2);
 	if (map->collect != 0)
-		close_game(map, "Error\nThe map must doesn't have a possible path\n", 2);
+		close_game(map, "Error\nThe map must doesn't have a \
+possible path\n", 2);
 }
 
 void	clone_grid(t_map *map)

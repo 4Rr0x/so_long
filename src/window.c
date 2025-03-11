@@ -34,7 +34,7 @@ void	load_img(t_map *map)
 	map->img->door_open = mlx_xpm_file_to_image(map->mlx,
 			"textures/door_open.xpm", &size, &size);
 	map->img->collect = mlx_xpm_file_to_image(map->mlx,
-		"textures/collect.xpm", &size, &size);
+			"textures/collect.xpm", &size, &size);
 }
 
 void	put_img(char c, t_map *map, int i, int j)
