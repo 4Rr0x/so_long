@@ -85,7 +85,7 @@ void	check_map(t_map	*map)
 	map_height(map);
 	fill_grid(map);
 	map_stats(map);
+	check_walls(map);
 	check_contents(map);
 	clone_grid(map);
-	check_walls(map);
 }

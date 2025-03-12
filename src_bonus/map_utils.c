@@ -37,6 +37,7 @@ void	flood_fill(int x, int y, t_map *map)
 	else if (map->grid_clone[x][y] == 'E')
 	{
 		map->exit--;
+		map->grid[x][y] = 'F';
 		return ;
 	}
 	else if (map->grid_clone[x][y] == 'C')
