@@ -8,24 +8,20 @@
 </p>
 <h1 align="center">so_long</h1>
 <p align="center">MiniLibX-powered 2D exploration gane with animated sprite work, full map validation, with a built-in Tester.</p>
-<p align="center">
-  <img src="docs/images/running_game.gif" alt="Gameplay showcase" width="85%">
-</p>
 
 ## Table of Contents
-1. [At a Glance](#at-a-glance)
-2. [About](#about)
-3. [Subject Compliance](#subject-compliance)
-4. [Custom Tester](#custom-tester)
-5. [Repository Layout](#repository-layout)
-6. [Build & Integration](#build--integration)
-7. [Usage Guidelines](#usage-guidelines)
-8. [Feature Deep Dive](#feature-deep-dive)
-9. [Input & Animation](#input--animation)
-10. [Rendering & HUD](#rendering--hud)
-11. [Internal Architecture](#internal-architecture)
-12. [Tester Workflow](#tester-workflow)
-13. [Results & Reporting](#results--reporting)
+1. [About](#about)
+2. [Subject Compliance](#subject-compliance)
+3. [Custom Tester](#custom-tester)
+4. [Repository Layout](#repository-layout)
+5. [Build & Integration](#build--integration)
+6. [Usage Guidelines](#usage-guidelines)
+7. [Feature Deep Dive](#feature-deep-dive)
+8. [Input & Animation](#input--animation)
+9. [Rendering & HUD](#rendering--hud)
+10. [Internal Architecture](#internal-architecture)
+11. [Tester Workflow](#tester-workflow)
+12. [Results & Reporting](#results--reporting)
 
 ## At a Glance
 > **Highlights:** Mandatory compliance, bonus animations, and repeatable validation in a single codebase.
@@ -110,15 +106,6 @@ make bonus && ./so_long assets/maps/valid/demo.ber
 
 </details>
 
-
-## Custom Tester
-<p align="center">
-  <img src="docs/images/running_tests.gif" alt="Automated tester run" width="85%">
-</p>
-
-- `make tester` chains two guards: `test_invalid` sweeps every map under `assets/maps/invalid`, and `test_textures` iterates through each `.xpm` texture.
-- Invalid maps verify both the formatted error header and the specific descriptive line while Valgrind watches for leaks (`Makefile:204`).
-- Texture checks temporarily revoke file permissions to confirm the engine surfaces the offending asset in its error output before restoring everything (`Makefile:240`).
 
 ## Repository Layout
 <details open>
